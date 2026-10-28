@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_SADPE_ASIS" targetNamespace="http://sad-pe.ifs.edu.br/bpmn/as-is" exporter="Claude" exporterVersion="1.0">
+  <bpmn:message id="Msg1" name="Pedido de ajuda" />
+  <bpmn:message id="Msg2" name="Comunicação de saída" />
+  <bpmn:message id="Msg3" name="Contato com a família" />
+  <bpmn:message id="Msg4" name="Convite às ações de apoio" />
+  <bpmn:dataStore id="DS_Academico" name="Sistema acadêmico" />
+  <bpmn:collaboration id="Collab_ASIS">
+    <bpmn:participant id="Part_Inst" name="Campus Aracaju: acompanhamento pedagógico (AS-IS)" processRef="Proc_Inst" />
+    <bpmn:participant id="Part_Est" name="Estudante e família" processRef="Proc_Est" />
+    <bpmn:messageFlow id="MF1" name="Pedido de ajuda" sourceRef="TE1" targetRef="MS1" messageRef="Msg1" />
+    <bpmn:messageFlow id="MF2" name="Comunicação de saída" sourceRef="TE2" targetRef="MS2" messageRef="Msg2" />
+    <bpmn:messageFlow id="MF3" name="Contato com a família" sourceRef="T14" targetRef="MSF" messageRef="Msg3" />
+    <bpmn:messageFlow id="MF4" name="Convite às ações de apoio" sourceRef="T17" targetRef="MSE" messageRef="Msg4" />
+  </bpmn:collaboration>
+  <bpmn:process id="Proc_Inst" isExecutable="false">
+    <bpmn:laneSet id="LS_I">
+      <bpmn:lane id="L_R" name="Professor da disciplina">
+        <bpmn:flowNodeRef>S0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T16</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E2</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_C" name="Coordenação do curso integrado">
+        <bpmn:flowNodeRef>T6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SP1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T18</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_D" name="Direção / Gerência de Ensino">
+        <bpmn:flowNodeRef>T10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E3</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_A" name="Assistência estudantil e núcleo especializado">
+        <bpmn:flowNodeRef>T15</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_P" name="Setor pedagógico">
+        <bpmn:flowNodeRef>T7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>MS1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>I1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T13</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T14</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>I2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T17</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>MS2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T19</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E4</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S0" name="Início de cada bimestre (4 por ano)"><bpmn:timerEventDefinition id="TD_S0" /></bpmn:startEvent>
+    <bpmn:exclusiveGateway id="M0" />
+    <bpmn:task id="T1" name="Aplicar avaliação bimestral" />
+    <bpmn:task id="T2" name="Lançar notas e faltas no sistema acadêmico">
+      <bpmn:dataOutputAssociation id="DOA1"><bpmn:targetRef>DSR1</bpmn:targetRef></bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G1" name="Resultado suficiente?" />
+    <bpmn:task id="T3" name="Aplicar recuperação bimestral e lançar nota" />
+    <bpmn:exclusiveGateway id="M1" />
+    <bpmn:task id="T4" name="Observar desempenho e participação em sala" />
+    <bpmn:exclusiveGateway id="G2" name="Dificuldade percebida em sala?" />
+    <bpmn:task id="T5" name="Relatar dificuldade à coordenação ou pedagogia" />
+    <bpmn:task id="T6" name="Analisar notas, faltas e relatos">
+      <bpmn:property id="Prop_T6" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA1"><bpmn:sourceRef>DSR2</bpmn:sourceRef><bpmn:targetRef>Prop_T6</bpmn:targetRef></bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G3" name="Dificuldade percebida pela coordenação?" />
+    <bpmn:task id="T7" name="Analisar notas, faltas e relatos">
+      <bpmn:property id="Prop_T7" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DIA2"><bpmn:sourceRef>DSR3</bpmn:sourceRef><bpmn:targetRef>Prop_T7</bpmn:targetRef></bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G4" name="Dificuldade percebida pela pedagogia?" />
+    <bpmn:startEvent id="MS1" name="Pedido de ajuda recebido"><bpmn:messageEventDefinition id="MD_MS1" messageRef="Msg1" /></bpmn:startEvent>
+    <bpmn:exclusiveGateway id="M2" />
+    <bpmn:task id="T8" name="Acolher o caso e compreender a dificuldade" />
+    <bpmn:exclusiveGateway id="G5" name="Dificuldade geral ou individual?" />
+    <bpmn:task id="T9" name="Convocar e conduzir conselho de classe" />
+    <bpmn:subProcess id="SP1" name="Realizar conselho de classe">
+      <bpmn:startEvent id="SP1_S" name="Conselho convocado" />
+      <bpmn:task id="SP1_T1" name="Analisar coletivamente a turma ou disciplina" />
+      <bpmn:task id="SP1_T2" name="Definir encaminhamentos coletivos" />
+      <bpmn:endEvent id="SP1_E" name="Encaminhamentos registrados" />
+      <bpmn:sequenceFlow id="F_SP1_S_SP1_T1" sourceRef="SP1_S" targetRef="SP1_T1" />
+      <bpmn:sequenceFlow id="F_SP1_T1_SP1_T2" sourceRef="SP1_T1" targetRef="SP1_T2" />
+      <bpmn:sequenceFlow id="F_SP1_T2_SP1_E" sourceRef="SP1_T2" targetRef="SP1_E" />
+    </bpmn:subProcess>
+    <bpmn:exclusiveGateway id="G6" name="Decisão estrutural necessária?" />
+    <bpmn:task id="T10" name="Tomar decisão estrutural" />
+    <bpmn:exclusiveGateway id="M3" />
+    <bpmn:task id="T11" name="Avaliar necessidades do estudante" />
+    <bpmn:task id="T12" name="Definir intervenção com professor e coordenação" />
+    <bpmn:inclusiveGateway id="I1" name="Quais ações?" default="F_I1_T13" />
+    <bpmn:task id="T13" name="Orientar estudos e acompanhar (inclui mentoria por pares)" />
+    <bpmn:task id="T14" name="Contatar a família" />
+    <bpmn:task id="T15" name="Prestar apoio social, psicológico ou especializado" />
+    <bpmn:task id="T16" name="Realizar recuperação paralela ou apoio pedagógico" />
+    <bpmn:inclusiveGateway id="I2" />
+    <bpmn:task id="T17" name="Acompanhar estudante e família" />
+    <bpmn:exclusiveGateway id="G7" name="Houve evolução?" />
+    <bpmn:exclusiveGateway id="M5" />
+    <bpmn:exclusiveGateway id="G8" name="Último bimestre do ano?" />
+    <bpmn:task id="T18" name="Avaliar situação do estudante ao fim do ano letivo" />
+    <bpmn:exclusiveGateway id="G9" name="Situação ao fim do ano?" />
+    <bpmn:endEvent id="E1" name="Estudante aprovado" />
+    <bpmn:endEvent id="E2" name="Estudante retido (repete a série)" />
+    <bpmn:endEvent id="E3" name="Estudante fora do curso" />
+    <bpmn:startEvent id="MS2" name="Saída comunicada (a qualquer momento do ano)"><bpmn:messageEventDefinition id="MD_MS2" messageRef="Msg2" /></bpmn:startEvent>
+    <bpmn:task id="T19" name="Registrar saída do estudante" />
+    <bpmn:endEvent id="E4" name="Estudante fora do curso" />
+    <bpmn:dataStoreReference id="DSR1" name="Sistema acadêmico" dataStoreRef="DS_Academico" />
+    <bpmn:dataStoreReference id="DSR2" name="Sistema acadêmico" dataStoreRef="DS_Academico" />
+    <bpmn:dataStoreReference id="DSR3" name="Sistema acadêmico" dataStoreRef="DS_Academico" />
+    <bpmn:sequenceFlow id="F_S0_M0" sourceRef="S0" targetRef="M0" />
+    <bpmn:sequenceFlow id="F_M0_T1" sourceRef="M0" targetRef="T1" />
+    <bpmn:sequenceFlow id="F_T1_T2" sourceRef="T1" targetRef="T2" />
+    <bpmn:sequenceFlow id="F_T2_G1" sourceRef="T2" targetRef="G1" />
+    <bpmn:sequenceFlow id="F_G1_T3" name="Não" sourceRef="G1" targetRef="T3" />
+    <bpmn:sequenceFlow id="F_G1_M1" name="Sim" sourceRef="G1" targetRef="M1" />
+    <bpmn:sequenceFlow id="F_T3_M1" sourceRef="T3" targetRef="M1" />
+    <bpmn:sequenceFlow id="F_M1_T4" sourceRef="M1" targetRef="T4" />
+    <bpmn:sequenceFlow id="F_T4_G2" sourceRef="T4" targetRef="G2" />
+    <bpmn:sequenceFlow id="F_G2_T5" name="Sim" sourceRef="G2" targetRef="T5" />
+    <bpmn:sequenceFlow id="F_G2_T6" name="Não" sourceRef="G2" targetRef="T6" />
+    <bpmn:sequenceFlow id="F_T5_M2" sourceRef="T5" targetRef="M2" />
+    <bpmn:sequenceFlow id="F_T6_G3" sourceRef="T6" targetRef="G3" />
+    <bpmn:sequenceFlow id="F_G3_M2" name="Sim" sourceRef="G3" targetRef="M2" />
+    <bpmn:sequenceFlow id="F_G3_T7" name="Não" sourceRef="G3" targetRef="T7" />
+    <bpmn:sequenceFlow id="F_T7_G4" sourceRef="T7" targetRef="G4" />
+    <bpmn:sequenceFlow id="F_G4_M2" name="Sim" sourceRef="G4" targetRef="M2" />
+    <bpmn:sequenceFlow id="F_G4_M5" name="Não" sourceRef="G4" targetRef="M5" />
+    <bpmn:sequenceFlow id="F_MS1_M2" sourceRef="MS1" targetRef="M2" />
+    <bpmn:sequenceFlow id="F_M2_T8" sourceRef="M2" targetRef="T8" />
+    <bpmn:sequenceFlow id="F_T8_G5" sourceRef="T8" targetRef="G5" />
+    <bpmn:sequenceFlow id="F_G5_T9" name="Geral" sourceRef="G5" targetRef="T9" />
+    <bpmn:sequenceFlow id="F_T9_SP1" sourceRef="T9" targetRef="SP1" />
+    <bpmn:sequenceFlow id="F_SP1_G6" sourceRef="SP1" targetRef="G6" />
+    <bpmn:sequenceFlow id="F_G6_T10" name="Sim" sourceRef="G6" targetRef="T10" />
+    <bpmn:sequenceFlow id="F_G6_M3" name="Não" sourceRef="G6" targetRef="M3" />
+    <bpmn:sequenceFlow id="F_T10_M3" sourceRef="T10" targetRef="M3" />
+    <bpmn:sequenceFlow id="F_M3_M5" sourceRef="M3" targetRef="M5" />
+    <bpmn:sequenceFlow id="F_G5_T11" name="Individual" sourceRef="G5" targetRef="T11" />
+    <bpmn:sequenceFlow id="F_T11_T12" sourceRef="T11" targetRef="T12" />
+    <bpmn:sequenceFlow id="F_T12_I1" sourceRef="T12" targetRef="I1" />
+    <bpmn:sequenceFlow id="F_I1_T13" name="Orientação / mentoria" sourceRef="I1" targetRef="T13" />
+    <bpmn:sequenceFlow id="F_I1_T14" name="Família" sourceRef="I1" targetRef="T14"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${contatarFamilia}</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_I1_T15" name="Apoio especializado" sourceRef="I1" targetRef="T15"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${apoioEspecializado}</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_I1_T16" name="Recuperação paralela" sourceRef="I1" targetRef="T16"><bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${recuperacaoParalela}</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_T13_I2" sourceRef="T13" targetRef="I2" />
+    <bpmn:sequenceFlow id="F_T14_I2" sourceRef="T14" targetRef="I2" />
+    <bpmn:sequenceFlow id="F_T15_I2" sourceRef="T15" targetRef="I2" />
+    <bpmn:sequenceFlow id="F_T16_I2" sourceRef="T16" targetRef="I2" />
+    <bpmn:sequenceFlow id="F_I2_T17" sourceRef="I2" targetRef="T17" />
+    <bpmn:sequenceFlow id="F_T17_G7" sourceRef="T17" targetRef="G7" />
+    <bpmn:sequenceFlow id="F_G7_T12" name="Não: rever intervenção" sourceRef="G7" targetRef="T12" />
+    <bpmn:sequenceFlow id="F_G7_M5" name="Sim" sourceRef="G7" targetRef="M5" />
+    <bpmn:sequenceFlow id="F_M5_G8" sourceRef="M5" targetRef="G8" />
+    <bpmn:sequenceFlow id="F_G8_M0" name="Não: próximo bimestre" sourceRef="G8" targetRef="M0" />
+    <bpmn:sequenceFlow id="F_G8_T18" name="Sim" sourceRef="G8" targetRef="T18" />
+    <bpmn:sequenceFlow id="F_T18_G9" sourceRef="T18" targetRef="G9" />
+    <bpmn:sequenceFlow id="F_G9_E1" name="Aprovado" sourceRef="G9" targetRef="E1" />
+    <bpmn:sequenceFlow id="F_G9_E2" name="Retido" sourceRef="G9" targetRef="E2" />
+    <bpmn:sequenceFlow id="F_G9_E3" name="Fora do curso" sourceRef="G9" targetRef="E3" />
+    <bpmn:sequenceFlow id="F_MS2_T19" sourceRef="MS2" targetRef="T19" />
+    <bpmn:sequenceFlow id="F_T19_E4" sourceRef="T19" targetRef="E4" />
+    <bpmn:textAnnotation id="A1"><bpmn:text>Ponto de dor: não há critério formal para definir dificuldade; a percepção depende de quem observa e de quando observa.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="A2"><bpmn:text>A validar: quem registra e cobra cada encaminhamento.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="A3"><bpmn:text>ROD: não há dependência nos integrados. Critérios de retenção e desligamento: confirmar no ROD.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:association id="AS1" sourceRef="T6" targetRef="A1" />
+    <bpmn:association id="AS2" sourceRef="T17" targetRef="A2" />
+    <bpmn:association id="AS3" sourceRef="T18" targetRef="A3" />
+  </bpmn:process>
+  <bpmn:process id="Proc_Est" isExecutable="false">
+    <bpmn:laneSet id="LS_E">
+      <bpmn:lane id="L_E" name="Estudante">
+        <bpmn:flowNodeRef>SE1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>TE1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EE1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SE2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>TE2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EE2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>MSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>TE3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EE3</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_F" name="Família">
+        <bpmn:flowNodeRef>MSF</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>TF1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EF1</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="SE1" name="Resultado da avaliação conhecido" />
+    <bpmn:task id="TE1" name="Procurar ajuda no setor pedagógico ou na coordenação" />
+    <bpmn:endEvent id="EE1" name="Pedido enviado" />
+    <bpmn:startEvent id="SE2" name="Decide deixar o curso" />
+    <bpmn:task id="TE2" name="Comunicar saída do curso" />
+    <bpmn:endEvent id="EE2" name="Saída comunicada" />
+    <bpmn:startEvent id="MSE" name="Convite às ações de apoio recebido"><bpmn:messageEventDefinition id="MD_MSE" messageRef="Msg4" /></bpmn:startEvent>
+    <bpmn:task id="TE3" name="Participar das ações de apoio" />
+    <bpmn:endEvent id="EE3" name="Ações concluídas" />
+    <bpmn:startEvent id="MSF" name="Contato da pedagogia recebido"><bpmn:messageEventDefinition id="MD_MSF" messageRef="Msg3" /></bpmn:startEvent>
+    <bpmn:task id="TF1" name="Acompanhar o estudante e apoiar a intervenção" />
+    <bpmn:endEvent id="EF1" name="Acompanhamento da família" />
+    <bpmn:sequenceFlow id="F_SE1_TE1" sourceRef="SE1" targetRef="TE1" />
+    <bpmn:sequenceFlow id="F_TE1_EE1" sourceRef="TE1" targetRef="EE1" />
+    <bpmn:sequenceFlow id="F_SE2_TE2" sourceRef="SE2" targetRef="TE2" />
+    <bpmn:sequenceFlow id="F_TE2_EE2" sourceRef="TE2" targetRef="EE2" />
+    <bpmn:sequenceFlow id="F_MSE_TE3" sourceRef="MSE" targetRef="TE3" />
+    <bpmn:sequenceFlow id="F_TE3_EE3" sourceRef="TE3" targetRef="EE3" />
+    <bpmn:sequenceFlow id="F_MSF_TF1" sourceRef="MSF" targetRef="TF1" />
+    <bpmn:sequenceFlow id="F_TF1_EF1" sourceRef="TF1" targetRef="EF1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_ASIS"><bpmndi:BPMNPlane id="Plane_ASIS" bpmnElement="Collab_ASIS">
+    <bpmndi:BPMNShape id="Part_Inst_di" bpmnElement="Part_Inst" isHorizontal="true"><dc:Bounds x="40" y="40" width="3900" height="850" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_R_di" bpmnElement="L_R" isHorizontal="true"><dc:Bounds x="70" y="40" width="3870" height="150" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_C_di" bpmnElement="L_C" isHorizontal="true"><dc:Bounds x="70" y="190" width="3870" height="150" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_D_di" bpmnElement="L_D" isHorizontal="true"><dc:Bounds x="70" y="340" width="3870" height="150" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_A_di" bpmnElement="L_A" isHorizontal="true"><dc:Bounds x="70" y="490" width="3870" height="150" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_P_di" bpmnElement="L_P" isHorizontal="true"><dc:Bounds x="70" y="640" width="3870" height="250" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="Part_Est_di" bpmnElement="Part_Est" isHorizontal="true"><dc:Bounds x="40" y="950" width="3900" height="280" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_E_di" bpmnElement="L_E" isHorizontal="true"><dc:Bounds x="70" y="950" width="3870" height="140" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="L_F_di" bpmnElement="L_F" isHorizontal="true"><dc:Bounds x="70" y="1090" width="3870" height="140" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="S0_di" bpmnElement="S0"><dc:Bounds x="132" y="97" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="95" y="135" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="M0_di" bpmnElement="M0" isMarkerVisible="true"><dc:Bounds x="205" y="90" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T1_di" bpmnElement="T1"><dc:Bounds x="290" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T2_di" bpmnElement="T2"><dc:Bounds x="430" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G1_di" bpmnElement="G1" isMarkerVisible="true"><dc:Bounds x="585" y="90" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="545" y="60" width="130" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T3_di" bpmnElement="T3"><dc:Bounds x="690" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="M1_di" bpmnElement="M1" isMarkerVisible="true"><dc:Bounds x="845" y="90" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T4_di" bpmnElement="T4"><dc:Bounds x="940" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G2_di" bpmnElement="G2" isMarkerVisible="true"><dc:Bounds x="1095" y="90" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1055" y="48" width="130" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T5_di" bpmnElement="T5"><dc:Bounds x="1200" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T6_di" bpmnElement="T6"><dc:Bounds x="1070" y="225" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G3_di" bpmnElement="G3" isMarkerVisible="true"><dc:Bounds x="1225" y="240" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1185" y="198" width="130" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T7_di" bpmnElement="T7"><dc:Bounds x="1200" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G4_di" bpmnElement="G4" isMarkerVisible="true"><dc:Bounds x="1355" y="665" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1315" y="623" width="130" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="MS1_di" bpmnElement="MS1"><dc:Bounds x="1482" y="817" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1368" y="821" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="M2_di" bpmnElement="M2" isMarkerVisible="true"><dc:Bounds x="1615" y="665" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T8_di" bpmnElement="T8"><dc:Bounds x="1730" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G5_di" bpmnElement="G5" isMarkerVisible="true"><dc:Bounds x="1895" y="665" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1855" y="717" width="130" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T9_di" bpmnElement="T9"><dc:Bounds x="1870" y="225" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SP1_di" bpmnElement="SP1" isExpanded="false"><dc:Bounds x="2020" y="225" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G6_di" bpmnElement="G6" isMarkerVisible="true"><dc:Bounds x="2175" y="240" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="2135" y="198" width="130" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T10_di" bpmnElement="T10"><dc:Bounds x="2150" y="375" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="M3_di" bpmnElement="M3" isMarkerVisible="true"><dc:Bounds x="2305" y="240" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T11_di" bpmnElement="T11"><dc:Bounds x="2040" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T12_di" bpmnElement="T12"><dc:Bounds x="2180" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="I1_di" bpmnElement="I1"><dc:Bounds x="2395" y="665" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="2355" y="635" width="130" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T13_di" bpmnElement="T13"><dc:Bounds x="2510" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T14_di" bpmnElement="T14"><dc:Bounds x="2510" y="795" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T15_di" bpmnElement="T15"><dc:Bounds x="2510" y="525" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T16_di" bpmnElement="T16"><dc:Bounds x="2510" y="75" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="I2_di" bpmnElement="I2"><dc:Bounds x="2675" y="665" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T17_di" bpmnElement="T17"><dc:Bounds x="2800" y="650" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G7_di" bpmnElement="G7" isMarkerVisible="true"><dc:Bounds x="2975" y="665" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="2935" y="635" width="130" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="M5_di" bpmnElement="M5" isMarkerVisible="true"><dc:Bounds x="3115" y="665" width="50" height="50" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G8_di" bpmnElement="G8" isMarkerVisible="true"><dc:Bounds x="3245" y="665" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="3205" y="717" width="130" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T18_di" bpmnElement="T18"><dc:Bounds x="3450" y="225" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="G9_di" bpmnElement="G9" isMarkerVisible="true"><dc:Bounds x="3615" y="240" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="3500" y="206" width="130" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="E1_di" bpmnElement="E1"><dc:Bounds x="3772" y="247" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3735" y="285" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="E2_di" bpmnElement="E2"><dc:Bounds x="3622" y="97" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3662" y="95" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="E3_di" bpmnElement="E3"><dc:Bounds x="3622" y="397" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3662" y="401" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="MS2_di" bpmnElement="MS2"><dc:Bounds x="1982" y="817" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1868" y="815" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="T19_di" bpmnElement="T19"><dc:Bounds x="2090" y="795" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="E4_di" bpmnElement="E4"><dc:Bounds x="2262" y="817" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2225" y="855" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="DSR1_di" bpmnElement="DSR1"><dc:Bounds x="455" y="240" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="425" y="292" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="DSR2_di" bpmnElement="DSR2"><dc:Bounds x="975" y="240" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="945" y="292" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="DSR3_di" bpmnElement="DSR3"><dc:Bounds x="1225" y="810" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1195" y="862" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SE1_di" bpmnElement="SE1"><dc:Bounds x="1342" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1305" y="1040" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="TE1_di" bpmnElement="TE1"><dc:Bounds x="1450" y="980" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="EE1_di" bpmnElement="EE1"><dc:Bounds x="1622" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1585" y="1040" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SE2_di" bpmnElement="SE2"><dc:Bounds x="1842" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1805" y="1040" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="TE2_di" bpmnElement="TE2"><dc:Bounds x="1950" y="980" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="EE2_di" bpmnElement="EE2"><dc:Bounds x="2122" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2085" y="1040" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="MSE_di" bpmnElement="MSE"><dc:Bounds x="2832" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2795" y="1040" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="TE3_di" bpmnElement="TE3"><dc:Bounds x="2940" y="980" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="EE3_di" bpmnElement="EE3"><dc:Bounds x="3112" y="1002" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3075" y="1040" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="MSF_di" bpmnElement="MSF"><dc:Bounds x="2542" y="1142" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2505" y="1180" width="110" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="TF1_di" bpmnElement="TF1"><dc:Bounds x="2650" y="1120" width="100" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="EF1_di" bpmnElement="EF1"><dc:Bounds x="2822" y="1142" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2785" y="1180" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="A1_di" bpmnElement="A1"><dc:Bounds x="1010" y="365" width="220" height="60" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="A2_di" bpmnElement="A2"><dc:Bounds x="2730" y="505" width="240" height="60" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="A3_di" bpmnElement="A3"><dc:Bounds x="3385" y="360" width="230" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S0_M0_di" bpmnElement="F_S0_M0"><di:waypoint x="168" y="115" /><di:waypoint x="205" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M0_T1_di" bpmnElement="F_M0_T1"><di:waypoint x="255" y="115" /><di:waypoint x="290" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T1_T2_di" bpmnElement="F_T1_T2"><di:waypoint x="390" y="115" /><di:waypoint x="430" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T2_G1_di" bpmnElement="F_T2_G1"><di:waypoint x="530" y="115" /><di:waypoint x="585" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G1_T3_di" bpmnElement="F_G1_T3"><di:waypoint x="635" y="115" /><di:waypoint x="690" y="115" /><bpmndi:BPMNLabel><dc:Bounds x="641" y="98" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G1_M1_di" bpmnElement="F_G1_M1"><di:waypoint x="610" y="140" /><di:waypoint x="610" y="170" /><di:waypoint x="870" y="170" /><di:waypoint x="870" y="140" /><bpmndi:BPMNLabel><dc:Bounds x="615" y="144" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T3_M1_di" bpmnElement="F_T3_M1"><di:waypoint x="790" y="115" /><di:waypoint x="845" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M1_T4_di" bpmnElement="F_M1_T4"><di:waypoint x="895" y="115" /><di:waypoint x="940" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T4_G2_di" bpmnElement="F_T4_G2"><di:waypoint x="1040" y="115" /><di:waypoint x="1095" y="115" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G2_T5_di" bpmnElement="F_G2_T5"><di:waypoint x="1145" y="115" /><di:waypoint x="1200" y="115" /><bpmndi:BPMNLabel><dc:Bounds x="1151" y="98" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G2_T6_di" bpmnElement="F_G2_T6"><di:waypoint x="1120" y="140" /><di:waypoint x="1120" y="225" /><bpmndi:BPMNLabel><dc:Bounds x="1125" y="144" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T5_M2_di" bpmnElement="F_T5_M2"><di:waypoint x="1300" y="115" /><di:waypoint x="1640" y="115" /><di:waypoint x="1640" y="665" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T6_G3_di" bpmnElement="F_T6_G3"><di:waypoint x="1170" y="265" /><di:waypoint x="1225" y="265" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G3_M2_di" bpmnElement="F_G3_M2"><di:waypoint x="1275" y="265" /><di:waypoint x="1640" y="265" /><di:waypoint x="1640" y="665" /><bpmndi:BPMNLabel><dc:Bounds x="1281" y="248" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G3_T7_di" bpmnElement="F_G3_T7"><di:waypoint x="1250" y="290" /><di:waypoint x="1250" y="650" /><bpmndi:BPMNLabel><dc:Bounds x="1255" y="294" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T7_G4_di" bpmnElement="F_T7_G4"><di:waypoint x="1300" y="690" /><di:waypoint x="1355" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G4_M2_di" bpmnElement="F_G4_M2"><di:waypoint x="1405" y="690" /><di:waypoint x="1615" y="690" /><bpmndi:BPMNLabel><dc:Bounds x="1411" y="673" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G4_M5_di" bpmnElement="F_G4_M5"><di:waypoint x="1380" y="715" /><di:waypoint x="1380" y="775" /><di:waypoint x="3140" y="775" /><di:waypoint x="3140" y="715" /><bpmndi:BPMNLabel><dc:Bounds x="1385" y="719" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_MS1_M2_di" bpmnElement="F_MS1_M2"><di:waypoint x="1518" y="835" /><di:waypoint x="1640" y="835" /><di:waypoint x="1640" y="715" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M2_T8_di" bpmnElement="F_M2_T8"><di:waypoint x="1665" y="690" /><di:waypoint x="1730" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T8_G5_di" bpmnElement="F_T8_G5"><di:waypoint x="1830" y="690" /><di:waypoint x="1895" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G5_T9_di" bpmnElement="F_G5_T9"><di:waypoint x="1920" y="665" /><di:waypoint x="1920" y="305" /><bpmndi:BPMNLabel><dc:Bounds x="1925" y="647" width="31.5" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T9_SP1_di" bpmnElement="F_T9_SP1"><di:waypoint x="1970" y="265" /><di:waypoint x="2020" y="265" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_SP1_G6_di" bpmnElement="F_SP1_G6"><di:waypoint x="2120" y="265" /><di:waypoint x="2175" y="265" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G6_T10_di" bpmnElement="F_G6_T10"><di:waypoint x="2200" y="290" /><di:waypoint x="2200" y="375" /><bpmndi:BPMNLabel><dc:Bounds x="2205" y="294" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G6_M3_di" bpmnElement="F_G6_M3"><di:waypoint x="2225" y="265" /><di:waypoint x="2305" y="265" /><bpmndi:BPMNLabel><dc:Bounds x="2231" y="248" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T10_M3_di" bpmnElement="F_T10_M3"><di:waypoint x="2250" y="415" /><di:waypoint x="2330" y="415" /><di:waypoint x="2330" y="290" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M3_M5_di" bpmnElement="F_M3_M5"><di:waypoint x="2355" y="265" /><di:waypoint x="3140" y="265" /><di:waypoint x="3140" y="665" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G5_T11_di" bpmnElement="F_G5_T11"><di:waypoint x="1945" y="690" /><di:waypoint x="2040" y="690" /><bpmndi:BPMNLabel><dc:Bounds x="1951" y="673" width="63" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T11_T12_di" bpmnElement="F_T11_T12"><di:waypoint x="2140" y="690" /><di:waypoint x="2180" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T12_I1_di" bpmnElement="F_T12_I1"><di:waypoint x="2280" y="690" /><di:waypoint x="2395" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_I1_T13_di" bpmnElement="F_I1_T13"><di:waypoint x="2445" y="690" /><di:waypoint x="2510" y="690" /><bpmndi:BPMNLabel><dc:Bounds x="2451" y="659" width="120" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_I1_T14_di" bpmnElement="F_I1_T14"><di:waypoint x="2420" y="715" /><di:waypoint x="2420" y="835" /><di:waypoint x="2510" y="835" /><bpmndi:BPMNLabel><dc:Bounds x="2425" y="719" width="44.1" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_I1_T15_di" bpmnElement="F_I1_T15"><di:waypoint x="2420" y="665" /><di:waypoint x="2420" y="565" /><di:waypoint x="2510" y="565" /><bpmndi:BPMNLabel><dc:Bounds x="2425" y="647" width="119.7" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_I1_T16_di" bpmnElement="F_I1_T16"><di:waypoint x="2420" y="665" /><di:waypoint x="2420" y="115" /><di:waypoint x="2510" y="115" /><bpmndi:BPMNLabel><dc:Bounds x="2425" y="633" width="120" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T13_I2_di" bpmnElement="F_T13_I2"><di:waypoint x="2610" y="690" /><di:waypoint x="2675" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T14_I2_di" bpmnElement="F_T14_I2"><di:waypoint x="2610" y="835" /><di:waypoint x="2700" y="835" /><di:waypoint x="2700" y="715" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T15_I2_di" bpmnElement="F_T15_I2"><di:waypoint x="2610" y="565" /><di:waypoint x="2700" y="565" /><di:waypoint x="2700" y="665" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T16_I2_di" bpmnElement="F_T16_I2"><di:waypoint x="2610" y="115" /><di:waypoint x="2700" y="115" /><di:waypoint x="2700" y="665" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_I2_T17_di" bpmnElement="F_I2_T17"><di:waypoint x="2725" y="690" /><di:waypoint x="2800" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T17_G7_di" bpmnElement="F_T17_G7"><di:waypoint x="2900" y="690" /><di:waypoint x="2975" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G7_T12_di" bpmnElement="F_G7_T12"><di:waypoint x="3000" y="715" /><di:waypoint x="3000" y="755" /><di:waypoint x="2230" y="755" /><di:waypoint x="2230" y="730" /><bpmndi:BPMNLabel><dc:Bounds x="3005" y="719" width="120" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G7_M5_di" bpmnElement="F_G7_M5"><di:waypoint x="3025" y="690" /><di:waypoint x="3115" y="690" /><bpmndi:BPMNLabel><dc:Bounds x="3031" y="673" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M5_G8_di" bpmnElement="F_M5_G8"><di:waypoint x="3165" y="690" /><di:waypoint x="3245" y="690" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G8_M0_di" bpmnElement="F_G8_M0"><di:waypoint x="3270" y="665" /><di:waypoint x="3270" y="52" /><di:waypoint x="230" y="52" /><di:waypoint x="230" y="90" /><bpmndi:BPMNLabel><dc:Bounds x="3275" y="633" width="120" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G8_T18_di" bpmnElement="F_G8_T18"><di:waypoint x="3295" y="690" /><di:waypoint x="3380" y="690" /><di:waypoint x="3380" y="265" /><di:waypoint x="3450" y="265" /><bpmndi:BPMNLabel><dc:Bounds x="3301" y="673" width="30" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T18_G9_di" bpmnElement="F_T18_G9"><di:waypoint x="3550" y="265" /><di:waypoint x="3615" y="265" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G9_E1_di" bpmnElement="F_G9_E1"><di:waypoint x="3665" y="265" /><di:waypoint x="3772" y="265" /><bpmndi:BPMNLabel><dc:Bounds x="3671" y="248" width="50.4" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G9_E2_di" bpmnElement="F_G9_E2"><di:waypoint x="3640" y="240" /><di:waypoint x="3640" y="133" /><bpmndi:BPMNLabel><dc:Bounds x="3645" y="222" width="37.8" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_G9_E3_di" bpmnElement="F_G9_E3"><di:waypoint x="3640" y="290" /><di:waypoint x="3640" y="397" /><bpmndi:BPMNLabel><dc:Bounds x="3645" y="294" width="81.9" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_MS2_T19_di" bpmnElement="F_MS2_T19"><di:waypoint x="2018" y="835" /><di:waypoint x="2090" y="835" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_T19_E4_di" bpmnElement="F_T19_E4"><di:waypoint x="2190" y="835" /><di:waypoint x="2262" y="835" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_SE1_TE1_di" bpmnElement="F_SE1_TE1"><di:waypoint x="1378" y="1020" /><di:waypoint x="1450" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_TE1_EE1_di" bpmnElement="F_TE1_EE1"><di:waypoint x="1550" y="1020" /><di:waypoint x="1622" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_SE2_TE2_di" bpmnElement="F_SE2_TE2"><di:waypoint x="1878" y="1020" /><di:waypoint x="1950" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_TE2_EE2_di" bpmnElement="F_TE2_EE2"><di:waypoint x="2050" y="1020" /><di:waypoint x="2122" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_MSE_TE3_di" bpmnElement="F_MSE_TE3"><di:waypoint x="2868" y="1020" /><di:waypoint x="2940" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_TE3_EE3_di" bpmnElement="F_TE3_EE3"><di:waypoint x="3040" y="1020" /><di:waypoint x="3112" y="1020" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_MSF_TF1_di" bpmnElement="F_MSF_TF1"><di:waypoint x="2578" y="1160" /><di:waypoint x="2650" y="1160" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_TF1_EF1_di" bpmnElement="F_TF1_EF1"><di:waypoint x="2750" y="1160" /><di:waypoint x="2822" y="1160" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF1_di" bpmnElement="MF1"><di:waypoint x="1500" y="980" /><di:waypoint x="1500" y="853" /><bpmndi:BPMNLabel><dc:Bounds x="1506" y="909.5" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF2_di" bpmnElement="MF2"><di:waypoint x="2000" y="980" /><di:waypoint x="2000" y="853" /><bpmndi:BPMNLabel><dc:Bounds x="2006" y="909.5" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF3_di" bpmnElement="MF3"><di:waypoint x="2560" y="875" /><di:waypoint x="2560" y="1142" /><bpmndi:BPMNLabel><dc:Bounds x="2566" y="905" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MF4_di" bpmnElement="MF4"><di:waypoint x="2850" y="730" /><di:waypoint x="2850" y="1002" /><bpmndi:BPMNLabel><dc:Bounds x="2856" y="859" width="110" height="28" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DOA1_di" bpmnElement="DOA1"><di:waypoint x="480" y="155" /><di:waypoint x="480" y="240" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DIA1_di" bpmnElement="DIA1"><di:waypoint x="1070" y="265" /><di:waypoint x="1025" y="265" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DIA2_di" bpmnElement="DIA2"><di:waypoint x="1250" y="730" /><di:waypoint x="1250" y="810" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS1_di" bpmnElement="AS1"><di:waypoint x="1120" y="305" /><di:waypoint x="1120" y="365" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS2_di" bpmnElement="AS2"><di:waypoint x="2850" y="650" /><di:waypoint x="2850" y="565" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS3_di" bpmnElement="AS3"><di:waypoint x="3500" y="305" /><di:waypoint x="3500" y="360" /></bpmndi:BPMNEdge>
+  </bpmndi:BPMNPlane></bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_SP1"><bpmndi:BPMNPlane id="Plane_SP1" bpmnElement="SP1">
+    <bpmndi:BPMNShape id="SP1_S_di" bpmnElement="SP1_S"><dc:Bounds x="132" y="132" width="36" height="36" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SP1_T1_di" bpmnElement="SP1_T1"><dc:Bounds x="230" y="110" width="140" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SP1_T2_di" bpmnElement="SP1_T2"><dc:Bounds x="430" y="110" width="140" height="80" /></bpmndi:BPMNShape>
+    <bpmndi:BPMNShape id="SP1_E_di" bpmnElement="SP1_E"><dc:Bounds x="662" y="132" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_SP1_S_SP1_T1_di" bpmnElement="F_SP1_S_SP1_T1"><di:waypoint x="168" y="150" /><di:waypoint x="230" y="150" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_SP1_T1_SP1_T2_di" bpmnElement="F_SP1_T1_SP1_T2"><di:waypoint x="370" y="150" /><di:waypoint x="430" y="150" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_SP1_T2_SP1_E_di" bpmnElement="F_SP1_T2_SP1_E"><di:waypoint x="570" y="150" /><di:waypoint x="662" y="150" /></bpmndi:BPMNEdge>
+  </bpmndi:BPMNPlane></bpmndi:BPMNDiagram>
+</bpmn:definitions>
