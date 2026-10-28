@@ -1,0 +1,15 @@
+1. Indicadores de vulnerabilidade: a Ficha 2 sugere indicadores como recebimento de auxílio estudantil, cotas e distância do campus. Quais deles são realmente necessários para priorizar o apoio pedagógico? A utilização de cotas, por exemplo, acrescentaria algum benefício concreto ou seria redundante em relação aos outros indicadores?
+
+2. Finalidade e base legal: qual hipótese legal da LGPD fundamentará o tratamento desses dados? Como a instituição demonstrará que utilizar informações socioeconômicas para direcionar apoio atende ao melhor interesse dos estudantes menores de idade, sem transformá-las em indicadores de fracasso escolar?
+
+3. Transparência com os estudantes e as famílias: os estudantes e seus responsáveis serão informados de que esses dados influenciam a ordem de prioridade? Como poderão compreender a finalidade do tratamento, consultar suas informações e solicitar correções?
+
+4. Intervenções anteriores: caso o histórico inclua atendimentos psicológicos ou sociais, é suficiente registrar apenas se houve melhora após a intervenção, sem armazenar detalhes do atendimento no M3? Como impedir que informações sensíveis ou relatos confidenciais sejam utilizados indevidamente na priorização?
+
+5. Retenção e descarte: o documento prevê guardar o histórico enquanto o estudante estiver no curso. Qual é a justificativa para esse prazo? Existem obrigações institucionais ou legais que exijam a conservação posterior? Quem será responsável por definir e executar o descarte ou a anonimização?
+
+6. Segurança e auditoria: o registro de consultas será obrigatório para todos os acessos aos dados socioeconômicos e aos históricos de intervenção? Quem poderá consultar esses registros e como serão identificados acessos indevidos?
+
+7. Revisão da priorização: como o estudante ou a equipe pedagógica poderá contestar uma classificação quando houver dados incorretos ou circunstâncias que o score não consiga representar? A revisão humana será documentada e poderá alterar a fila com justificativa?
+
+8. Avaliação de resultados e discriminação: após a implantação, quem verificará se os critérios estão efetivamente direcionando apoio a quem precisa? Com que frequência serão avaliados possíveis vieses, efeitos indesejados e a necessidade de manter cada indicador?
