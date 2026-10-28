@@ -1,0 +1,11 @@
+Analisando o documento do BPMN senti falta na clareza do inicio e do fim do fluxo, principalmente do fim (acho que ficou fora do pdf) e se vai ter apenas um fim ou alguns outros dependendo dos resultados dos gateways
+
+Quando não é identificado uma dificuldade do aluno ele vai direto para "Avaliar situação ao fim do ano letivo" realmente ou possui alguma outra atividade que o aluno possa ser responsável?
+
+A separação é entre dificuldade geral e individual ou no modelo que é usado atualmente pode existir algum outro cenário para mapear?
+
+Ao analisar a atividade "Orientar estudos e acompanhar" eu acabei ficando meio confuso com as demais atividades tracejadas (acredito que sejam opcionais), mas isso não ficou explicito, causando dúvidas
+
+Em relação às raias eu acredito que faça bastante sentido essas divisões, desde que elas realmente existam na instituição e realizem de fato essas atividades inseridas.
+
+
