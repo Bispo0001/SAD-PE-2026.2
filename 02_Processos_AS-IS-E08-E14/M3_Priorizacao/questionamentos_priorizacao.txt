@@ -1,0 +1,14 @@
+1. A forma com que é feita a priorização não é realmente padronizada? Além disso, existe uma dúvida na própria lógica do fluxo: o que significa exatamente aplicar um critério informal e depois retornar à fila? Se a capacidade está indisponível, como a solicitação entra na fila? Ela fica aguardando uma vaga? O critério informal define quem terá preferência quando surgir disponibilidade?
+
+2. Após a atividade "fila de priorização", existe um gateway exclusivo com a pergunta "Priorizar atendimento?". O caminho positivo conduz à atividade "priorizar caso", enquanto o caminho negativo retorna à fila. Só que, se o caso já está em uma fila de priorização, o que significa decidir se ele será priorizado ou não?
+
+3. Quais critéios são usados para a atividade de "analisa emergência/gravidade"?
+
+4. O gateway "Selecionar tipo de suporte?" apresenta quatro saídas. Mas, da forma que está no BPMN, o aluno só pode receber um tipo de ajuda por vez, nada simultâneo, é isso mesmo?
+
+5. O que seria a palavra "limitado" da atividade "realiza o acompanhamento limitado"?
+
+6. O evento final está descrito como "Fila semanal processada", mas isso não é necessariamente verdade, já que o fim representa o fim da instância do processo.
+
+7. Algumas partes do diagrama não estão em conformidade com os padrões descritos na ficha técnica BPMN.
+
